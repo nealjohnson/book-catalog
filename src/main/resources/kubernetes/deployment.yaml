@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog
+  namespace: anz-name-space
+  labels:
+    app: book-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: book-catalog
+  template:
+    metadata:
+      labels:
+        app: book-catalog
+    spec:
+      containers:
+        - name: book-catalog
+          image: anil16/book-catalog
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8070
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "kubernetes"
