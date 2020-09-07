@@ -24,7 +24,7 @@ public class ApplicationConfig {
     }
 
     @Bean
-    @LoadBalanced
+
     public RestTemplate getRestClient(RestTemplateBuilder restTemplateBuilder) {
         restTemplateBuilder.setConnectTimeout(Duration.ofSeconds(timeOut));
         RestTemplate restClient = restTemplateBuilder.build();
